@@ -20,13 +20,7 @@ const RandomUserPage = () => {
   };
 
   return (
-    <Container
-    // style={{
-    //   display: "grid",
-    //   gridTemplateColumns: "auto",
-    //   gridRow: "auto",
-    // }}
-    >
+    <Container>
       <div
         style={{
           display: "grid",
