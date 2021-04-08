@@ -7,7 +7,8 @@ function App() {
   return (
     <div className="App">
       <h1>Random User</h1>
-      <UserPage />
+      {/*<UserPage />*/}
+      <RandomUserPage />
     </div>
   );
 }

@@ -6,37 +6,42 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { RandomUserResponse } from "../../models/randomUserResponse";
 
+//main component
 const UserPage = () => {
+  //1. create the local state
   const classes = useStyles();
-  const [users, setUsers] = useState<RandomUserResponse>();
+  const [user, setUser] = useState<RandomUserResponse>();
 
+  //3. call the
   useEffect(() => {
     fetchUsers();
   }, []);
 
+  //2. send http requests using axios
+  // put the function in aysnc -await
   const fetchUsers = async () => {
     const { data } = await getUserAxios();
     console.log(JSON.stringify(data, null, 2));
-    setUsers(data);
+    setUser(data);
   };
 
   return (
     <Container>
       <div>
-        {users?.results?.map((user) => (
-          <CardContent key={user.email}>
+        {user?.results?.map((result) => (
+          <CardContent key={result.email}>
             <Typography
               className={classes.title}
               color="textSecondary"
               gutterBottom
             >
-              <img src={user.picture.large} />
+              <img src={result.picture.large} />
             </Typography>
             <Typography className={classes.pos} color="textSecondary">
-              name: {user.name.title} {user.name.first} {user.name.last}
+              name: {result.name.title} {result.name.first} {result.name.last}
             </Typography>
             <Typography variant="body2" component="p">
-              age: {user.dob.age}
+              age: {result.dob.age}
             </Typography>
           </CardContent>
         ))}
